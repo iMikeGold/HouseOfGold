@@ -1,13 +1,13 @@
 {
   "name": "main-site",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build && npx opennextjs-cloudflare build",
-    "deploy": "npx opennextjs-cloudflare deploy",
-    "start": "next start",
-    "lint": "eslint"
+  "private": true,"scripts": {
+  "dev": "next dev",
+  "clean": "rm -rf .next .open-next node_modules/.cache",
+  "build": "next build",
+  "build:cloudflare": "npx opennextjs-cloudflare build",
+  "start": "next start",
+  "lint": "eslint"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.0",
@@ -21,7 +21,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "15.5.19", 
     "tailwindcss": "^4",
     "typescript": "^5"
   }
