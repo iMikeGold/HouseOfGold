@@ -1,5 +1,5 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  
   "name": "houseofgold",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-06-26",

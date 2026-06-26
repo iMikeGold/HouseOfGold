@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  experimental: {
+    instrumentationHook: false, // Disables the feature causing the look-up error
+  },
 };
-
 export default nextConfig;
