@@ -4,10 +4,15 @@
   "private": true,"scripts": {
   "dev": "next dev",
   "clean": "rm -rf .next .open-next node_modules/.cache",
+
   "build": "next build",
   "build:cloudflare": "npx opennextjs-cloudflare build",
-  "start": "next start",
+
+  "deploy": "wrangler deploy",
+  
+    "start": "next start",
   "lint": "eslint"
+
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.0",
