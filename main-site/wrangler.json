@@ -1,7 +1,7 @@
 {
   
   "name": "houseofgold",
-  "main": ".open-next/_worker.js",
+  "main": ".open-next/worker.js",
   "compatibility_date": "2025-06-26",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
