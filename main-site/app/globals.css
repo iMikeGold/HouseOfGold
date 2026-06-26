@@ -1,26 +1,443 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030303;
+  --foreground: #f4ead2;
+  --gold: #c8a24a;
+  --gold-soft: #ecd28a;
+  --black-gold: #070604;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.entry-screen,
+.house-arrival,
+.house-shell {
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(200, 162, 74, 0.16), transparent 26rem),
+    linear-gradient(180deg, #050403 0%, #000 100%);
+}
+
+.entry-screen {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.entry-stack {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  text-align: center;
+}
+
+.entry-kicker {
+  color: rgba(244, 234, 210, 0.58);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.entry-stack h1 {
+  color: var(--gold-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 12vw, 4.8rem);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 0.95;
+  margin: 0;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+}
+
+.entry-action {
+  border: 1px solid rgba(236, 210, 138, 0.82);
+  color: var(--gold-soft);
+  display: inline-grid;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  min-width: 146px;
+  padding: 15px 22px;
+  place-items: center;
+  text-decoration: none;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.entry-action:hover,
+.entry-action:focus-visible {
+  background: rgba(200, 162, 74, 0.1);
+  box-shadow: 0 0 34px rgba(200, 162, 74, 0.22);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.house-shell {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(0px, 2.4vw, 24px);
+}
+
+.house-arrival {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  padding: clamp(0px, 2.4vw, 24px);
+}
+
+.arrival-window {
+  align-items: center;
+  aspect-ratio: 390 / 844;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(200, 162, 74, 0.2), transparent 8rem),
+    linear-gradient(180deg, rgba(236, 210, 138, 0.06), transparent 32%),
+    #010101;
+  box-shadow:
+    inset 0 0 90px rgba(0, 0, 0, 0.86),
+    0 0 0 1px rgba(236, 210, 138, 0.16),
+    0 30px 90px rgba(0, 0, 0, 0.8);
+  display: flex;
+  height: min(100svh, 844px);
+  justify-content: center;
+  max-height: 100svh;
+  max-width: min(100vw, 390px);
+  overflow: hidden;
+  position: relative;
+  width: min(100vw, 390px);
+}
+
+.arrival-window::before {
+  border: 1px solid rgba(236, 210, 138, 0.18);
+  bottom: 11%;
+  content: "";
+  height: 34%;
+  left: 22%;
+  position: absolute;
+  right: 22%;
+}
+
+.arrival-window::after {
+  background: linear-gradient(90deg, transparent, rgba(236, 210, 138, 0.4), transparent);
+  bottom: 18%;
+  content: "";
+  height: 1px;
+  left: 14%;
+  opacity: 0.7;
+  position: absolute;
+  right: 14%;
+}
+
+.arrival-threshold {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  padding: 24px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.arrival-threshold p {
+  color: rgba(244, 234, 210, 0.55);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.arrival-threshold h1 {
+  color: var(--gold-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  margin: 0;
+  text-indent: 0.2em;
+}
+
+.arrival-threshold a {
+  border: 1px solid rgba(236, 210, 138, 0.62);
+  color: var(--gold-soft);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  margin-top: 18px;
+  min-width: 178px;
+  padding: 14px 18px;
+  text-decoration: none;
+  text-indent: 0.24em;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.arrival-threshold a:hover,
+.arrival-threshold a:focus-visible {
+  background: rgba(200, 162, 74, 0.1);
+  box-shadow: 0 0 34px rgba(200, 162, 74, 0.22);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.house-window {
+  aspect-ratio: 390 / 844;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(236, 210, 138, 0.18),
+    0 26px 80px rgba(0, 0, 0, 0.72),
+    0 0 120px rgba(200, 162, 74, 0.1);
+  height: min(100svh, 844px);
+  max-height: 100svh;
+  max-width: min(100vw, 390px);
+  overflow: hidden;
+  position: relative;
+  width: min(100vw, 390px);
+}
+
+.room-stage {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.room-stage::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.room-stage--heavy::after {
+  box-shadow:
+    inset 0 0 76px rgba(0, 0, 0, 0.8),
+    inset 0 0 22px rgba(0, 0, 0, 0.55);
+}
+
+.room-stage--soft::after {
+  box-shadow:
+    inset 0 0 58px rgba(0, 0, 0, 0.58),
+    inset 0 0 18px rgba(0, 0, 0, 0.42);
+}
+
+.room-camera {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform-origin: 50% 50%;
+  transition: transform 900ms cubic-bezier(0.2, 0.9, 0.22, 1);
+  width: 100%;
+  will-change: transform;
+}
+
+.room-image {
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  user-select: none;
+  width: 100%;
+}
+
+.hotspot {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(236, 210, 138, 0);
+  border-radius: 999px;
+  color: var(--gold-soft);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease;
+  z-index: 4;
+}
+
+.hotspot span {
+  background: rgba(0, 0, 0, 0.58);
+  border: 1px solid rgba(236, 210, 138, 0.34);
+  border-radius: 999px;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  opacity: 0;
+  padding: 7px 9px;
+  text-transform: uppercase;
+  transform: translateY(4px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  white-space: nowrap;
+}
+
+.hotspot:hover,
+.hotspot:focus-visible,
+.hotspot--active {
+  background: rgba(236, 210, 138, 0.08);
+  border-color: rgba(236, 210, 138, 0.34);
+  box-shadow:
+    0 0 28px rgba(236, 210, 138, 0.25),
+    inset 0 0 26px rgba(236, 210, 138, 0.12);
+  outline: none;
+}
+
+.hotspot:hover span,
+.hotspot:focus-visible span,
+.hotspot--active span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.room-particles {
+  inset: 0;
+  opacity: 0.42;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.room-particles--gold-dust {
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(236, 210, 138, 0.4) 0 1px, transparent 2px),
+    radial-gradient(circle at 72% 40%, rgba(236, 210, 138, 0.26) 0 1px, transparent 2px),
+    radial-gradient(circle at 48% 78%, rgba(236, 210, 138, 0.3) 0 1px, transparent 2px);
+  background-size: 96px 132px;
+}
+
+.room-particles--starlight {
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(167, 211, 255, 0.55) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 26%, rgba(236, 210, 138, 0.48) 0 1px, transparent 2px),
+    radial-gradient(circle at 52% 62%, rgba(255, 255, 255, 0.44) 0 1px, transparent 2px);
+  background-size: 72px 88px;
+}
+
+.room-particles--haze {
+  background:
+    radial-gradient(circle at 54% 20%, rgba(236, 210, 138, 0.18), transparent 16rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 58%);
+}
+
+.room-compass {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.44);
+  border: 1px solid rgba(236, 210, 138, 0.38);
+  border-radius: 50%;
+  bottom: 18px;
+  color: var(--gold-soft);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.15rem;
+  height: 38px;
+  justify-content: center;
+  left: 18px;
+  line-height: 1;
+  position: absolute;
+  width: 38px;
+  z-index: 5;
+}
+
+.room-title {
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
+  bottom: 0;
+  color: var(--gold-soft);
+  display: grid;
+  gap: 4px;
+  left: 0;
+  padding: 54px 70px 20px;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  z-index: 4;
+}
+
+.room-title span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.room-title small {
+  color: rgba(244, 234, 210, 0.68);
+  font-size: 0.66rem;
+  line-height: 1.35;
+}
+
+.room-inspection {
+  background: rgba(0, 0, 0, 0.68);
+  border: 1px solid rgba(236, 210, 138, 0.28);
+  color: rgba(244, 234, 210, 0.78);
+  display: grid;
+  gap: 5px;
+  left: 20px;
+  padding: 12px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 5;
+}
+
+.room-inspection strong {
+  color: var(--gold-soft);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.room-inspection span {
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 720px) {
+  .arrival-window,
+  .house-window {
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-action,
+  .hotspot,
+  .hotspot span,
+  .room-camera {
+    transition: none;
+  }
 }
