@@ -1,18 +1,16 @@
 {
   "name": "main-site",
   "version": "0.1.0",
-  "private": true,"scripts": {
-  "dev": "next dev",
-  "clean": "rm -rf .next .open-next node_modules/.cache",
-
-  "build": "next build",
-  "build:cloudflare": "npx opennextjs-cloudflare build",
-
-  "deploy": "wrangler deploy",
-  
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "clean": "rm -rf .next .open-next node_modules/.cache",
+    "build": "next build",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "preview:cloudflare": "npm run build:cloudflare && wrangler dev",
+    "deploy": "npm run build:cloudflare && wrangler deploy",
     "start": "next start",
-  "lint": "eslint"
-
+    "lint": "eslint"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.20.0",

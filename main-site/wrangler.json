@@ -1,13 +1,32 @@
 {
-  
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "houseofgold",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2025-06-26",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_date": "2026-06-26",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "houseofgold.online",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.houseofgold.online",
+      "custom_domain": true
+    }
+  ],
   "assets": {
-    "pages_build_output_dir": ".open-next",
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
-  
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "houseofgold"
+    }
+  ]
 }
