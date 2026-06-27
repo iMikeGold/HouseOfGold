@@ -1,10 +1,58 @@
 import type { RoomDefinition } from "@/house/engine/types";
 
 export const rooms = {
+  // ==============================================
+  // NEW: Entrance / Black Gold Door
+  // ==============================================
+  entrance: {
+    id: "entrance",
+    name: "The Black Gold Door",
+    media: {
+      base: {
+        type: "image",
+        src: "/house/content/rooms/entrance/entrance-black-gold-door-no10-720p.JPG",
+        poster: "/house/content/rooms/entrance/entrance-black-gold-door-no10-720p.JPG",
+      },
+      // variants: [] // Add extra angles/states here later
+    },
+    description: "The threshold to House of Gold",
+    cameraStart: { zoom: 1, panX: 0, panY: 0 },
+    atmosphere: { vignette: "heavy", particles: "haze" },
+    transition: {
+      video: "/house/content/rooms/entrance/entrance-black-gold-door-no10-slowzoom-back-to-fastzoom-forward-480p.MP4",
+      duration: 1200, // Match your video length in ms
+    },
+    preloadNext: [
+      "/house/content/rooms/entrance/entrance-black-gold-door-no10-slowzoom-back-to-fastzoom-forward-480p.MP4",
+      "/rooms/hall-001.JPG",
+    ],
+    hotspots: [
+      {
+        id: "open-door",
+        type: "door",
+        label: "Enter the House",
+        x: 50,
+        y: 45,
+        width: 22,
+        height: 35,
+        route: "/house/hall",
+        camera: { zoom: 1.3, panX: 0, panY: -5 },
+      },
+    ],
+  },
+
+  // ==============================================
+  // EXISTING ROOMS — UPDATED TO NEW FORMAT
+  // ==============================================
   hall: {
     id: "hall",
     name: "The Great Hall",
-    image: "/rooms/hall-001.JPG",
+    media: {
+      base: {
+        type: "image",
+        src: "/rooms/hall-001.JPG",
+      },
+    },
     description: "The central threshold of the House.",
     cameraStart: { zoom: 1, panX: 0, panY: 0 },
     atmosphere: { vignette: "heavy", particles: "gold-dust" },
@@ -45,10 +93,13 @@ export const rooms = {
       },
     ],
   },
+
   charter: {
     id: "charter",
     name: "Charter Chamber",
-    image: "/rooms/charter-001.JPG",
+    media: {
+      base: { type: "image", src: "/rooms/charter-001.JPG" },
+    },
     description: "A chamber of articles, symbols, and founding vows.",
     cameraStart: { zoom: 1.04, panX: 0, panY: 0 },
     atmosphere: { vignette: "heavy", particles: "haze" },
@@ -78,10 +129,13 @@ export const rooms = {
       },
     ],
   },
+
   music: {
     id: "music",
     name: "Music Chamber",
-    image: "/rooms/music-001.JPG",
+    media: {
+      base: { type: "image", src: "/rooms/music-001.JPG" },
+    },
     description: "A working chamber for sound, score, and signal.",
     cameraStart: { zoom: 1.02, panX: 0, panY: 0 },
     atmosphere: { vignette: "soft", particles: "starlight" },
@@ -111,10 +165,13 @@ export const rooms = {
       },
     ],
   },
+
   vision: {
     id: "vision",
     name: "Vision Observatory",
-    image: "/rooms/vision-001.JPG",
+    media: {
+      base: { type: "image", src: "/rooms/vision-001.JPG" },
+    },
     description: "A projection room for cinema, image, and future works.",
     cameraStart: { zoom: 1, panX: 0, panY: 0 },
     atmosphere: { vignette: "soft", particles: "starlight" },
